@@ -1,0 +1,181 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="Syed Noorullah">
+        <sql>
+                CREATE TABLE IF NOT EXISTS customer(
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                `name` VARCHAR(255),
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME
+                );
+
+                CREATE TABLE IF NOT EXISTS product(
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                `name` VARCHAR(255),
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME
+                );
+
+                CREATE TABLE IF NOT EXISTS `order`(
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                customer_id INT,
+                area_id INT,
+                total DOUBLE,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME
+                );
+
+                CREATE TABLE IF NOT EXISTS `order_item`(
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                order_id INT,
+                product_id INT,
+                unit_price DOUBLE,
+                quantity INT,
+                total DOUBLE,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME
+                );
+
+                CREATE TABLE IF NOT EXISTS `inventory`(
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                product_id INT,
+                unit_price DOUBLE,
+                quantity INT,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME
+                );
+
+                CREATE TABLE IF NOT EXISTS `area`(
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                `code` VARCHAR(255),
+                `name` VARCHAR(255),
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME
+                );
+
+
+                INSERT INTO `area`(`code`, NAME)
+                VALUES('NAZIMABAD', 'Nazimabad Town'),
+                ('LIAQUATABAD', 'Liaquatabad Town'),
+                ('NORTH_NAZIMABAD', 'North Nazimabad Town'),
+                ('GULBERG', 'Gulberg Town'),
+                ('NEW_KARACHI', 'New Karachi Town'),
+                ('GUL_IQBAD', 'Gulshan-e-Iqbad Town'),
+                ('JAMSHED', 'Jamshed Town'),
+                ('SADDAR', 'Saddar Town'),
+                ('LYARI', 'Lyari Town'),
+                ('ORANGI', 'Orangi Town'),
+                ('KEMARI', 'Kemari Town'),
+                ('SITE', 'Site Town'),
+                ('BALDIA', 'Baldia Town'),
+                ('KORANGI', 'Korangi Town'),
+                ('MALIR', 'Malir Town');
+
+
+                INSERT INTO customer (`name`)
+                VALUES
+                ('John Doe'),
+                ('Jane Smith'),
+                ('David Johnson'),
+                ('Emily Davis'),
+                ('Michael Wilson'),
+                ('Sarah Brown'),
+                ('Robert Miller'),
+                ('Olivia Garcia'),
+                ('William Martinez'),
+                ('Sophia Jackson'),
+                ('James Anderson'),
+                ('Emma Taylor'),
+                ('Alexander Clark'),
+                ('Lily Moore'),
+                ('Ethan Thompson'),
+                ('Ava White'),
+                ('Benjamin Harris'),
+                ('Mia Lee'),
+                ('Christopher Lewis'),
+                ('Harper Hall'),
+                ('Daniel Wright'),
+                ('Grace Young'),
+                ('Matthew King'),
+                ('Isabella Turner'),
+                ('Samuel Adams');
+
+
+                INSERT INTO product (`name`)
+                VALUES
+                ('Smartphone'),
+                ('Laptop'),
+                ('Headphones'),
+                ('Smartwatch'),
+                ('Tablet'),
+                ('Camera'),
+                ('Wireless Speaker'),
+                ('Gaming Console'),
+                ('Fitness Tracker'),
+                ('Desktop Computer'),
+                ('Bluetooth Earbuds'),
+                ('LED Television'),
+                ('Portable Charger'),
+                ('External Hard Drive'),
+                ('Smart Home Hub'),
+                ('Wi-Fi Router'),
+                ('Printer'),
+                ('Digital Thermometer'),
+                ('Smart Scale'),
+                ('Action Camera'),
+                ('Drone'),
+                ('Smart Doorbell'),
+                ('Robotic Vacuum Cleaner'),
+                ('Earphones with Mic'),
+                ('Computer Monitor'),
+                ('Power Bank'),
+                ('MP3 Player'),
+                ('Gaming Mouse'),
+                ('Wireless Keyboard'),
+                ('Virtual Reality Headset');
+
+
+
+
+                INSERT INTO inventory(product_id, unit_price, quantity)
+                VALUES
+                (1, 50000.00, 150),       -- Smartphone
+                (2, 100000.00, 130),      -- Laptop
+                (3, 3000.00, 100),       -- Headphones
+                (4, 5000.00, 40),       -- Smartwatch
+                (5, 80000.00, 160),       -- Tablet
+                (6, 50000.00, 180),       -- Camera
+                (7, 5000.00, 120),       -- Wireless Speaker
+                (8, 35000.00, 135),       -- Gaming Console
+                (9, 4000.00, 100),       -- Fitness Tracker
+                (10, 70000.00, 125),      -- Desktop Computer
+                (11, 5000.00, 150),      -- Bluetooth Earbuds
+                (12, 45000.00, 145),      -- LED Television
+                (13, 3000.00, 190),       -- Portable Charger
+                (14, 12000.00, 155),      -- External Hard Drive
+                (15, 30000.00, 175),      -- Smart Home Hub
+                (16, 8000.00, 110),      -- Wi-Fi Router
+                (17, 15000.00, 165),      -- Printer
+                (18, 2500.00, 130),      -- Digital Thermometer
+                (19, 5000.00, 85),       -- Smart Scale
+                (20, 18000.00, 170),      -- Action Camera
+                (21, 35000.00, 140),      -- Drone
+                (22, 12000.00, 195),      -- Smart Doorbell
+                (23, 30000.00, 150),      -- Robotic Vacuum Cleaner
+                (24, 4000.00, 120),      -- Earphones with Mic
+                (25, 15000.00, 160),      -- Computer Monitor
+                (26, 5000.00, 185),       -- Power Bank
+                (27, 3000.00, 110),      -- MP3 Player
+                (28, 2500.00, 130),      -- Gaming Mouse
+                (29, 2500.00, 120),      -- Wireless Keyboard
+                (30, 60000.00, 190);      -- Virtual Reality Headset
+        </sql>
+
+    </changeSet>
+</databaseChangeLog>
+
+
