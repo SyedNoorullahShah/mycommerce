@@ -75,19 +75,22 @@ The project comprises four main components:
 - **Jupyter Notebook** (Optional): For interactive PySpark development and data visualization
 
 ### Steps
-- Clone the repository.
-- Start MySQL Server and Kafka broker(s).
-**Producer (Java) Application User Guide:-**:  
-   - Configure the MySQL database username and password and the Kafka brokers in `application.yml`
-   - Initialize the schema using Liquibase on application startup.  
-**Consumer (PySpark) Application User Guide:-**:  
-   - Open the MyCommerceConsumer file in Jupyter Notebook (or any other alternate tool you choose).
-   - Replace the value of `bootstrap_servers` as below and run the consumer app:-
-     `consumer = KafkaConsumer(
-    bootstrap_servers='<bootstrap servers>',
-    value_deserializer = lambda v: json.loads(v.decode('ascii')),
-    auto_offset_reset='earliest'
-)`
+1. **Clone the repository**.
+2. **Start MySQL Server and Kafka broker(s)**.
+
+#### Producer (Java) Application User Guide:  
+- Configure the MySQL database username and password and the Kafka brokers in `application.yml`.  
+- Initialize the schema using Liquibase on application startup.
+
+#### Consumer (PySpark) Application User Guide:  
+- Open the `MyCommerceConsumer.ipynb` file in Jupyter Notebook (or any other alternative tool you choose).  
+- Replace the value of `bootstrap_servers` in the code as shown below:
+  ```python
+  consumer = KafkaConsumer(
+      bootstrap_servers='<bootstrap servers>',
+      value_deserializer=lambda v: json.loads(v.decode('ascii')),
+      auto_offset_reset='earliest'
+  )
 
 ---
 
@@ -98,6 +101,12 @@ The following is a demo that shows the project in action:-
 https://github.com/user-attachments/assets/8cca73af-3b70-4b5e-907a-1a735943a9d4
 
 ---
+
 ## Contributions
 
-Contributions, issues, and feature requests are welcome! Feel free to fork this repository and submit a pull request.
+We welcome contributions to enhance the functionality or address issues. Here’s how you can contribute:
+1. **Fork the repository** and create a new branch for your changes.
+2. **Submit a pull request** describing the feature or fix.
+3. Feel free to open an issue for any bugs or feature suggestions.
+
+Your contributions are greatly appreciated!
